@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=PT+Serif&display=swap');
+* {
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+body {
+	margin: 0;
+	background: #414141;
+}
+
+nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 460px;
+	overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background: #313131;
+}
+.card-content img {
+	max-height: 450px;
+	transition: transform .5s ease;
+}
+main {
+	margin-left: 460px;
+	height: 100%;
+	padding: 10px 90px 20px 60px;
+}
+
+nav h1 {
+	font-size: 3rem;
+}
+
+nav .header {
+	padding: 25px;
+	text-align: center;
+}
+.header input {
+	border: none;
+	border-radius: 60px;
+	padding: 10px;
+	background: #414141;
+	color: white;
+	font-family: 'Poppins', sans-serif;
+}
+.mobile_nav {
+	padding: 10px;
+	background: #313131;
+  	position:sticky;
+  	margin-left: 460px;
+  	z-index: 1;
+  	position:-webkit-sticky;
+  	top:0px;
+}
+progress {
+	display: block;
+	width: 100%;
+	height: 10px;
+	background: #313131;
+	border: none;
+}
+progress[value]::-webkit-progress-value {
+
+}
+.mobile_nav h3 {
+	margin: 0;
+	display: inline-block;
+}
+
+.burger {
+	display: none;
+	cursor: pointer;
+}
+
+.burger div {
+	width: 35px;
+	margin: 6px 0px;
+	height: 3px;
+	background-color: white;
+}
+
+.burger div:last-of-type {
+	margin-bottom: -5px;
+}
+
+nav p {
+	font-family: 'Poppins', sans-serif;
+	margin-top: -30px;
+}
+
+hr {
+	border-top: 1px solid white;
+}
+
+nav ul {
+	list-style: none;
+	padding: 0;
+}
+
+nav ul li {
+	width: 100%;
+	padding: 20px;
+	background-color: black;
+}
+
+nav ul li:hover {
+	background: #115173;
+}
+
+nav ul li a:hover {
+	color: white;
+}
+
+nav ul li a {
+	text-decoration: none;
+	font-size: 1.3em;
+	font-family: 'Poppins', sans-serif;
+	color: white;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+}
+
+nav ul li.is-active {
+	background: #115173;
+}
+#footer {
+	text-align: center;
+	font-size: 1.3em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Poppins', sans-serif;
+}
+
+code {
+	font-family: monospace;
+}
+
+p,
+a,
+strong,
+b, #post-body {
+	font-family: 'PT Serif', sans-serif;
+}
+
+h1 a {
+	font-family: 'Poppins', sans-serif;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #115173;
+}
+
+.card-footer {
+	display: flex;
+	justify-content: space-between;
+}
+
+.card {
+	border-radius: 25px;
+	background: #313131;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card:not(:first-of-type) {
+	margin-top: 15px;
+}
+
+.card-content,
+.card-footer {
+	padding: 15px;
+}
+
+.card-img {
+	overflow: hidden;
+}
+
+.card-img img {
+	display: block;
+	width: 100%;
+	height: 400px;
+	border-top-right-radius: 25px;
+	border-top-left-radius: 25px;
+	object-fit: cover;
+	transition: transform .5s ease;
+}
+
+.card img:hover {
+	transform: scale(1.1);
+	/* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.card p {
+	font-size: 1.5em;
+	color: rgb(172, 169, 169);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span,
+strong,
+b {
+	color: white;
+}
+
+.info {
+	margin-bottom: 10px;
+}
+
+.badge {
+	background: #115173;
+	color: white;
+	padding: 10px;
+	font-family: 'Poppins', sans-serif;
+	border-radius: 25px;
+}
+
+a.button {
+	background: #115173;
+	color: white;
+	padding: 10px;
+	font-family: 'Poppins', sans-serif;
+	border-radius: 25px;
+	text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+	nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 0px !important;
+		overflow-x: hidden;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		background: #313131;
+	}
+	nav h1 {
+		font-size: 1.2rem;
+	}
+	nav p {
+		font-family: 'Poppins', sans-serif;
+		margin-top: 30px;
+	}
+	main {
+		margin-left: 0px;
+		padding: 15px;
+	}
+	.mobile_nav {
+		display: block;
+		margin-left: 0px;
+	}
+	.burger {
+		display: inline-block;
+	}
+	.mobile_nav h3 {
+		display: inline;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 460px !important;
+		overflow-x: hidden;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		background: #313131;
+	}
+	main {
+		margin-left: 460px !important;
+		height: 100%;
+		padding: 10px 90px 20px 60px;
+	}
+}

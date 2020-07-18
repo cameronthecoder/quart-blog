@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}{{post[1]}} - Blog - Cameron Dahl{% endblock %}
+
+{% block nav_title %}{{post[1]}}{% endblock %}
+{% block main %}
+        <div class="card">
+            <div class="card-img">
+                <img src="{{post[2]}}" alt="">
+            </div>
+            <div class="card-content">
+                <h1>{{post[1]}}</h1>
+                <strong>By Cameron Dahl</strong>
+                <div id="post-body"><p>{{post[5]|safe}}</p></div>
+            </div>
+        </div>
+        <style type="text/css">
+            li {
+                color: white;
+            }
+            #post-body {
+                white-space: pre-wrap;
+                color: white;
+            }
+        </style>
+{% endblock %}

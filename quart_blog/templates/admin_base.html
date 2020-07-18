@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{%block title %} {%endblock%} - Cameron Dahl</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bulma/bulma.css') }}">
+    <script src="https://kit.fontawesome.com/449e6a9651.js" crossorigin="anonymous"></script>
+  </head>
+  <header>
+    <nav class="navbar is-spaced is-primary mb-5" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <strong class="is-size-4">Cameron Dahl <span class="tag is-info">Admin</span></strong>
+        </a>
+    
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a href="#" class="button is-primary">
+                View site
+              </a>
+              <a class="button is-light">
+                Log out
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <body>
+    <noscript>
+      <div class="notification is-warning is-light container">It seems like you don't have javascript enabled. Please enable it or you will face issues trying to use this admin panel.</div>
+    </noscript>
+      <div class="columns is-centered">
+        <div class="column is-one-fifth">
+          {% include 'includes/admin_sidebar.html' %}
+        </div>
+        <div class="column is-half is-mobile">
+          {% block body %}
+          {% endblock %}
+        </div>
+      </div>
+    </body>
+</html>

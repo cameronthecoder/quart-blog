@@ -1,0 +1,102 @@
+{% extends 'admin_base.html' %}
+{% block title %}New Post{% endblock %}
+{% block body %}
+<h1 class="title" id="new_post">
+    <span class="icon">
+      <i class="far fa-edit"></i>
+    </span>
+    New Post (Draft)
+  </h1>
+  <ul class="steps">
+    <li class="steps-segment is-active" id="step-one">
+      <a href="#" class="steps-marker"></a>
+    </li>
+    <li class="steps-segment" id="step-two">
+      <span href="#" class="steps-marker"></span>
+    </li>
+    <li class="steps-segment">
+      <span href="#" class="steps-marker"></span>
+    </li>
+  </ul>
+
+  <div class="field">
+    <label class="label">Title</label>
+    <div class="control">
+      <input class="input is-medium" type="text" name="title" maxlength="50" placeholder="Title" id="title" autocapitalize="true" autocomplete="off" required>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Tags</label>
+    <div class="control">
+      <div class="field is-grouped is-grouped-multiline" id="tag_fields">
+        <div class="control">
+            <input type="text" class="input" placeholder="Add tag (press Enter to add)" id="add_tag">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Summary</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Summary" id="summary" name="summary" required>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Slug <a href="#">Change</a></label>
+    <div class="control is-loading">
+      <input class="input" type="text" id="slug" placeholder="url-friendly" name="slug" autocomplete="off" disabled>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Body</label>
+    <div class="control">
+      <div class="field has-addons">
+        <p class="control">
+          <button class="button">
+            <span class="icon is-small">
+              <i class="fas fa-bold"></i>
+            </span>
+            <span>Bold</span>
+          </button>
+        </p>
+        <p class="control">
+          <button class="button">
+            <span class="icon is-small">
+              <i class="fas fa-italic"></i>
+            </span>
+            <span>Italic</span>
+          </button>
+        </p>
+        <p class="control">
+          <button class="button">
+            <span class="icon is-small">
+              <i class="fas fa-underline"></i>
+            </span>
+            <span>Underline</span>
+          </button>
+        </p>
+      </div>
+      
+      <textarea class="textarea" placeholder="Textarea" required id="body" name="body"></textarea>
+    </div>
+  </div>
+
+
+<div class="field is-grouped is-grouped-right">
+  <p class="control">
+    <a class="button is-medium">
+      Save as draft
+    </a>
+  </p>
+  <p class="control">
+    <button class="button is-primary is-medium" id="next" type="submit">
+      Next
+    </button>
+  </p>
+</div>
+<script src="{{ url_for('static', filename='new_post.js') }}"></script>
+{% endblock %}

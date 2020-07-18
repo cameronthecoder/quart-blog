@@ -1,0 +1,212 @@
+{% extends 'admin_base.html' %}
+{% block title %}New Post{% endblock %}
+{% block body %}
+<h1 class="title" id="new_post">
+    <span class="icon">
+      <i class="far fa-edit"></i>
+    </span>
+    New Post (Draft)
+</h1>
+
+<div class="steps" id="stepsDemo">
+    <div class="step-item is-active is-success">
+      <div class="step-marker">1</div>
+      <div class="step-details">
+        <p class="step-title">Metadata</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-marker">2</div>
+      <div class="step-details">
+        <p class="step-title">Settings</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-marker">3</div>
+      <div class="step-details">
+        <p class="step-title">Review</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-marker">4</div>
+      <div class="step-details">
+        <p class="step-title">Finish & Share</p>
+      </div>
+    </div>
+    <div class="steps-content">
+      <div class="step-content is-active" id="one">
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Title</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input is-medium" name="title" id="title" type="text" placeholder="Title" autofocus data-validate="require" required>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- TAGS  -->
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Tags</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+                <div class="control" id="tag-control">
+                    <input class="input" type="text" id="input-tag" data-type="tags" placeholder="ex: django, flask">
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- END TAGS -->
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Summary</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" name="summary" id="summary" placeholder="Enter a short summary about the article here." data-validate="require">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Slug</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input class="input" name="slug" id="slug" type="text" placeholder="Slug" data-validate="require">
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="step-content has-text-centered" id="two">
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Firstname</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" name="firstname" id="firstname" type="text" placeholder="Firstname" autofocus data-validate="require">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Last name</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control has-icon has-icon-right">
+                <input class="input" type="text" name="lastname" id="lastname" placeholder="Last name" data-validate="require">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Email</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control has-icon has-icon-right">
+                <input class="input" type="email" name="email" id="email" placeholder="Email" data-validate="require">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="step-content has-text-centered" id="three">
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Facebook account</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" name="facebook" id="facebook" type="text" placeholder="Facebook account url" autofocus data-validate="require">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Twitter account</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" name="twitter" id="twitter" type="text" placeholder="Twitter account url" autofocus data-validate="require">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="step-content has-text-centered" id="four">
+        <h1 class="title is-4">Your account is now created!</h1>
+      </div>
+    </div>
+    <div class="steps-actions">
+      <div class="steps-action">
+        <a href="#" data-nav="previous" class="button is-light">Previous</a>
+      </div>
+      <div class="steps-action">
+        <a href="#" data-nav="next" class="button is-light" id="next">Next</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='bulma/bulma-steps.min.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bulma-tagsinput@2.0.0/dist/js/bulma-tagsinput.min.js"></script>
+  <script>
+    bulmaSteps.attach('.steps', {
+      beforeNext: id => {
+        switch (id) {
+          case 0:
+            return validateFirstStep();
+          case 2:
+          fetch('https://jsonplaceholder.typicode.com/photos')
+          .then(response => response.json())
+          .then(json => console.log(json))
+        }
+      },
+      onError: error => {
+        const input = document.getElementById(error.inputID);
+        input.classList.add('is-danger');
+        input.parentElement.childNodes.forEach(child => {
+          if(child.nodeName == "P") { child.remove(); }
+        })
+        const message = document.createElement('p');
+        message.innerHTML = error.message;
+        message.className = 'help is-danger';
+        input.parentElement.appendChild(message);
+      }
+    });
+
+    const validateFirstStep = () => {
+      let errors = [];
+      const fields = document.querySelectorAll('#title, #summary, #slug');
+      fields.forEach(field => {
+        if(field.value.length == 0) {
+          errors.push({
+            "message": `This field is required.`,
+            "inputID": field.id
+          });
+        }
+      });
+      return errors;
+    };
+
+    var inputTags = document.getElementById('input-tag');
+    new bulmaTagsinput(inputTags);
+</script>
+  
+{% endblock %}

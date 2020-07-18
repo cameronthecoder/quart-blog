@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %} - Cameron Dahl</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="header">
+            <h1>Cameron Dahl</h1>
+            <p>Tech / Web dev / Gaming</p>
+            <form method="get" role="search" action="/search"><input type="text" name="query" placeholder="Search" required minlength="3"></form>
+        </div>
+        <ul class="links">
+            <li class="is-active"><a href="{{ url_for('blog.index') }}">Blog</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="{{ url_for('blog.contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="mobile_nav">
+        <div class="burger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div> 
+        </div>
+        <h3>{% block nav_title %} Navigation {% endblock %}</h3>
+    </div>
+    <main>
+        {% block main %}
+        {% endblock %}
+        <p id="footer">Made with 💙 by Cameron Dahl</p>
+    </main>
+    <script type="text/javascript">
+      const nav = document.querySelector('nav');
+      const mobile_nav = document.querySelector('.mobile_nav');
+      const main = document.querySelector('main');
+      const close = document.querySelector('#close');
+      const hamburger = document.querySelector('#hamburger');
+
+      hamburger.addEventListener('click', function() {
+        if (nav.style.width != "200px") {
+          nav.style.width = "200px";
+          main.style.marginLeft = "200px";
+          mobile_nav.style.marginLeft = "200px";
+        } else {
+          nav.style.width = "0px";
+          main.style.marginLeft = "0px";
+          mobile_nav.style.marginLeft = "0px";
+        }
+      })
+    </script>
+</body>
+</html>

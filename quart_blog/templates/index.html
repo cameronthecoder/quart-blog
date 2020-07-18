@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}{% if not query %}Blog{% else %}Search results for: {{query}}{% endif %}{% endblock %}
+
+{% block main %}
+        {% if not query %}
+        <h1>Blog Posts</h1>
+        {% else %}
+        <h1>{{posts|length}} {% if posts|length == 1 %}result{% else %}results{% endif %} for query: {{query}}</h1>
+        {% endif %}
+        {% for post in posts %}
+        <div class="card">
+            <div class="card-img">
+                <img src="{{post[2]}}" alt="">
+            </div>
+            <div class="card-content">
+                <h1><a href="/post/{{post[3]}}/">{{post[1]}}</a></h1>
+                <strong>By Cameron Dahl</strong>
+                <div id="post-body"><p>{{post[4][:200]|safe}}...</p></div>
+            </div>
+            <div class="card-footer">
+                <div class="info">
+                    <span class="badge">25 Views</span>
+                    <span class="badge">{{post[6]|humanize()}}</span>
+                </div>
+                <a href="/post/{{post[3]}}/" class="button">Read More</a>
+            </div>
+        </div>
+
+        {% endfor %}
+{% endblock %}
